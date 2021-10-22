@@ -1,0 +1,78 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.footer {
+  position: relative;
+  padding: 20px 0;
+  @media screen and (min-width: $tablet2) {
+    padding: 40px 0;
+  }
+
+  &.footer-main {
+    @media screen and (min-width: $tablet2) {
+      display: none;
+    }
+  }
+
+  & .container {
+    justify-content: space-between;
+    @media screen and (min-width: $tablet1) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    @media screen and (min-width: $tablet1) {
+      font-size: 14px;
+      line-height: 24px;
+    }
+    @media screen and (min-width: $tablet2) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
+
+  &__feedback {
+    position: relative;
+    display: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: $blue;
+    pointer-events: auto;
+    padding: 5px 7px;
+    transition: color 0.5s;
+    @media screen and (min-width: $tablet1) {
+      display: block;
+    }
+    @media screen and (min-width: $tablet2) {
+      font-size: 18px;
+    }
+
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: $blue;
+      z-index: -1;
+      transition: width 0.5s;
+    }
+
+    &:hover {
+      color: $white;
+      transition: color 0.5s;
+      &:before{
+        width: 100%;
+        transition: width 0.5s;
+      }
+    }
+  }
+}

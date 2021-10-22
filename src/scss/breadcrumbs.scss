@@ -1,0 +1,96 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.breadcrumbs {
+  position: relative;
+  display: block;
+  text-align: center;
+  margin-top: 7px;
+  @media screen and (min-width: $tablet1) {
+    margin-top: 0;
+    margin-right: 100px;
+  }
+
+  & span{
+    color: $blue;
+  }
+
+  &__link {
+    position: relative;
+    display: inline;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    color: $blue;
+    padding: 5px 7px;
+    transition: color 0.5s;
+    @media screen and (min-width: $tablet1) {
+      font-size: 16px;
+    }
+    @media screen and (min-width: $tablet2) {
+      font-size: 18px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: $blue;
+      z-index: -1;
+      transition: width 0.5s;
+    }
+
+    &:hover {
+      color: $white;
+      transition: color 0.5s;
+
+      &:before {
+        width: 100%;
+        transition: width 0.5s;
+      }
+    }
+  }
+}
+
+.back {
+  position: relative;
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: $blue;
+  padding: 5px 7px;
+  transition: color 0.5s;
+  order: -1;
+  @media screen and (min-width: $tablet1) {
+    font-size: 16px;
+    order: 1;
+  }
+  @media screen and (min-width: $tablet2) {
+    font-size: 18px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: $blue;
+    z-index: -1;
+    transition: width 0.5s;
+  }
+
+  &:hover {
+    color: $white;
+    transition: color 0.5s;
+    &:before{
+      width: 100%;
+      transition: width 0.5s;
+    }
+  }
+}

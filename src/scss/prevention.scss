@@ -1,0 +1,389 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.prevention {
+  position: relative;
+  margin: 60px auto 30px;
+  pointer-events: auto;
+  @media screen and (min-width: $tablet1) {
+    margin: 100px auto 50px;
+  }
+  @media screen and (min-width: $tablet2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  & .row {
+    align-items: flex-end;
+  }
+
+  /*& .container {
+    position: static;
+  }*/
+
+  &__slider {
+    position: relative;
+    /*background-color: $white;
+    box-shadow: 0 22px 34px rgba(0,0,0, 0.03);*/
+    width: calc(100% + 15px);
+    padding: 25px 15px 25px 15px;
+    right: 15px;
+    margin: 20px 0 ;
+    pointer-events: auto;
+    @media screen and (min-width: $tablet1) {
+      padding: 80px 25px 40px 15px;
+      margin: 30px 0 ;
+    }
+    @media screen and (min-width: $tablet2) {
+      right: 25px;
+      width: calc(100% + 25px);
+      padding: 80px 40px 40px 25px;
+      margin: 40px 0 ;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100%;
+      background-color: $white;
+      box-shadow: 0 22px 34px rgba(0,0,0, 0.03);
+    }
+    /*@media screen and (min-width: 1300px) {
+      width: calc((100vw - 1250px)/2 + 1280px);
+      right: calc((100vw - 1250px)/2);
+      padding-left: calc((100vw - 1280px));
+    }*/
+
+    & .swiper-container {
+      height: max-content;
+      pointer-events: auto;
+    }
+
+    & .swiper-slide {
+      &.swiper-slide-visible {
+        z-index: 2;
+        pointer-events: auto;
+      }
+
+      & .prevention__item {
+        &:nth-child(2),
+        &:nth-child(3) {
+          & .prevention__item-img {
+            display: none;
+            @media screen and (min-width: $tablet2) {
+              display: block;
+            }
+          }
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    & .swiper-navigation {
+      position: absolute;
+      width: 50px;
+      height: 18px;
+      margin: 0;
+      top: -45px;
+      right: 0;
+      @media screen and (min-width: $tablet1) {
+        top: 30px;
+        right: 25px;
+      }
+      @media screen and (min-width: $tablet2) {
+        right: 40px;
+      }
+
+      & .swiper-button-next,
+      & .swiper-button-prev {
+        position: absolute;
+        outline: none;
+        width: 15px;
+        height: 18px;
+        display: block;
+        opacity: 1;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:after {
+          content: '';
+        }
+
+        & svg {
+          position: absolute;
+          height: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+          fill: $gray-blue;
+          transition: fill 0.3s;
+        }
+
+        &:hover{
+          & svg {
+            fill: $blue;
+            transition: fill 0.3s;
+          }
+        }
+      }
+
+      & .swiper-button-prev {
+        left: 0;
+        & svg {
+          transform: rotate(180deg) translateY(50%);
+        }
+      }
+
+      & .swiper-button-next {
+        right: 0;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    margin-bottom: 30px;
+    @media screen and (min-width: $tablet2) {
+      display: flex;
+      /*margin-bottom: 40px;*/
+    }
+
+    &:hover {
+      & .prevention__item-img {
+        &:before {
+          opacity: 0.7;
+          transition: opacity 0.3s;
+        }
+      }
+
+      & .prevention__item-caption {
+        color: $blue;
+        transition: color 0.3s;
+      }
+    }
+
+    &-img {
+      position: relative;
+      width: 100%;
+      height: 60vw;
+      overflow: hidden;
+      @media screen and (min-width: $mobile1) {
+        height: 52vw;
+      }
+      @media screen and (min-width: $tablet1) {
+        height: 26vw;
+      }
+      @media screen and (min-width: $tablet2) {
+        width: 180px;
+        min-width: 180px;
+        height: 110px;
+        margin-right: 30px;
+      }
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $blue;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+    }
+
+    &-date {
+      font-size: 12px;
+      font-weight: 600;
+      color: #A2BECE;
+      margin-top: 8px;
+      @media screen and (min-width: $tablet2) {
+        font-size: 14px;
+        margin-top: 0;
+      }
+    }
+
+    &-caption {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 20px;
+      margin-top: 10px;
+      transition: color 0.3s;
+      @media screen and (min-width: $tablet2) {}
+    }
+
+    &-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+  }
+
+  &__box {
+    position: relative;
+    width: 100%;
+
+    & .swiper-container {
+      position: relative;
+      width: 100%;
+      height: max-content;
+    }
+
+    & .swiper-slide {
+      position: relative;
+      width: 100%;
+      /*background-color: $blue;*/
+      padding: 25px 15px 35px;
+      @media screen and (min-width: $tablet1) {
+        padding: 40px 30px 65px;
+      }
+      @media screen and (min-width: $tablet2) {
+        padding: 40px 40px 65px;
+      }
+    }
+
+    & .swiper-navigation {
+      position: absolute;
+      width: 50px;
+      height: 18px;
+      margin: 0;
+      top: 25px;
+      right: 20px;
+      @media screen and (min-width: $tablet1) {
+        top: 48px;
+        right: 25px;
+      }
+      @media screen and (min-width: $tablet2) {
+        right: 40px;
+      }
+
+      & .swiper-button-next,
+      & .swiper-button-prev {
+        position: absolute;
+        outline: none;
+        width: 15px;
+        height: 18px;
+        display: block;
+        opacity: 1;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:after {
+          content: '';
+        }
+
+        & svg {
+          position: absolute;
+          height: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+          fill: $gray-blue;
+          transition: fill 0.3s;
+        }
+
+        &:hover{
+          & svg {
+            fill: $white;
+            transition: fill 0.3s;
+          }
+        }
+      }
+
+      & .swiper-button-prev {
+        left: 0;
+        & svg {
+          transform: rotate(180deg) translateY(50%);
+        }
+      }
+
+      & .swiper-button-next {
+        right: 0;
+      }
+    }
+
+    &-caption {
+      position: relative;
+      font-family: 'PTMono';
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 24px;
+      text-transform: uppercase;
+      color: $white;
+      padding-right: 60px;
+      padding-bottom: 10px;
+      @media screen and (min-width: $tablet1) {
+        font-size: 24px;
+        line-height: 36px;
+        padding-bottom: 0;
+      }
+      @media screen and (min-width: $tablet2) {
+        padding-right: 60%;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: -25px;
+        left: -15px;
+        width: calc(100% + 30px);
+        height: calc(100% + 80px);
+        background-color: $blue;
+        z-index: -1;
+        @media screen and (min-width: $tablet1) {
+          top: -40px;
+          left: -25px;
+          width: calc(100% + 50px);
+          height: calc(100% + 80px);
+        }
+        @media screen and (min-width: $tablet2) {
+          left: -40px;
+          width: calc(100% + 80px);
+        }
+      }
+    }
+
+    &-description {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 18px;
+      background-color: $white;
+      width: 100%;
+      box-shadow: 0 22px 34px rgba(0,0,0, 0.03);
+      padding: 12px;
+      margin-top: 15px;
+      @media screen and (min-width: $tablet1) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+      @media screen and (min-width: $tablet2) {
+        position: absolute;
+        line-height: 24px;
+        width: calc(60% - 120px);
+        padding: 20px;
+        top: 30px;
+        right: 110px;
+      }
+    }
+  }
+}

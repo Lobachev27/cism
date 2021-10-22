@@ -1,0 +1,33 @@
+<header class="header">
+  <div class="container">
+    <a class="header__logo" href="./">
+      <img class="header__logo-img" src="./img/logo.svg" alt="">
+    </a>
+
+    @@include("./header-nav.html")
+
+    <div class="header__burger">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20"><path d="M0 16h22v4H0zm0-8h16v4H0zm0-8h22v4H0z"/></svg>
+    </div>
+  </div>
+</header>
+
+<div class="header-mobile">
+  <div class="container">
+    <div class="row">
+      <a class="header__logo" href="./">
+        <img class="header__logo-img" src="./img/logo.svg" alt="">
+      </a>
+      <div class="header__close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18.385" height="18.385"><g><path d="M2.828 0l15.556 15.556-2.828 2.829L0 2.828z"/><path d="M0 15.556L15.556 0l2.829 2.828L2.828 18.384z"/></g></svg>
+      </div>
+    </div>
+
+    @@include("./header-nav.html")
+
+    <div class="header-mobile__footer">
+      <a class="header-mobile__feedback" href="javascript:void(0);">Обратная связь</a>
+      <div class="header-mobile__footer-text">Центр изучения и сетевого мониторинга молодёжной среды © 2019 — 2021</div>
+    </div>
+  </div>
+</div>

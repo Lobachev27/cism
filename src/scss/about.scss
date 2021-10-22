@@ -1,0 +1,134 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.about {
+  position: relative;
+  margin: 30px auto 60px;
+  pointer-events: auto;
+  @media screen and (min-width: $tablet1) {
+    margin: 50px auto 100px;
+  }
+  @media screen and (min-width: $tablet2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-bottom: 100px;
+    margin: 0 auto;
+  }
+
+  & .row {
+    align-items: flex-end;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    list-style: none;
+    margin: 20px auto;
+    @media screen and (min-width: $tablet1) {
+      grid-gap: 25px;
+      margin: 30px auto;
+    }
+    @media screen and (min-width: $tablet2) {
+      grid-gap: 30px;
+      margin: 35px auto;
+    }
+  }
+
+  &__item {
+    background-color: $white;
+    padding: 5px 20px 20px;
+    box-shadow: 0 22px 34px rgba(0,0,0, 0.03);
+    @media screen and (min-width: $tablet1) {
+      padding: 30px 40px 40px;
+    }
+    @media screen and (min-width: $tablet2) {
+      padding: 30px 45px 45px;
+    }
+
+    &-count {
+      font-family: 'PTMono';
+      font-size: 48px;
+      font-weight: 700;
+      color: $blue;
+      @media screen and (min-width: $tablet1) {
+        font-size: 50px;
+        line-height: 70px;
+      }
+      @media screen and (min-width: $tablet2) {
+        font-size: 56px;
+        line-height: 77px;
+      }
+    }
+
+    &-text {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 18px;
+      @media screen and (min-width: $tablet1) {
+        font-size: 16px;
+        line-height: 22px;
+      }
+      @media screen and (min-width: $tablet2) {
+        font-size: 18px;
+        line-height: 28px;
+      }
+    }
+  }
+
+  &__description {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    @media screen and (min-width: $tablet1) {
+      font-size: 16px;
+      line-height: 30px;
+    }
+    @media screen and (min-width: $tablet2) {
+      font-size: 18px;
+      line-height: 36px;
+    }
+  }
+
+  &__more {
+    position: relative;
+    font-size: 14px;
+    font-weight: 700;
+    color: $blue;
+    line-height: 24px;
+    padding: 5px 7px;
+    margin-left: -7px;
+    transition: color 0.5s;
+    pointer-events: auto;
+    @media screen and (min-width: $tablet1) {
+      font-size: 16px;
+      line-height: 30px;
+    }
+    @media screen and (min-width: $tablet2) {
+      font-size: 18px;
+      line-height: 36px;
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background-color: $blue;
+      z-index: -1;
+      transition: width 0.5s;
+    }
+
+    &:hover {
+      color: $white;
+      transition: color 0.5s;
+      &:before{
+        width: 100%;
+        transition: width 0.5s;
+      }
+    }
+  }
+}

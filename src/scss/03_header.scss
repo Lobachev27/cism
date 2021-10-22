@@ -1,0 +1,194 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  border-top: 33px solid $black;
+  transition: transform 0.5s;
+  z-index: 50;
+  @media screen and (min-width: $tablet2) {
+    position: absolute;
+    border: none;
+  }
+
+  &.hidden {
+    transform: translate(-100%, 0);
+    transition: transform 0.5s;
+  }
+
+  & .container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 77px;
+    background-color: $gray;
+    @media screen and (min-width: $tablet2) {
+      height: 120px;
+      background-color: transparent;
+    }
+  }
+
+  &__logo {
+    display: block;
+
+    &-img {
+      width: 115px;
+      @media screen and (min-width: $tablet2) {
+        width: 135px;
+      }
+    }
+  }
+
+  & .header__nav {
+    display: none;
+    @media screen and (min-width: $tablet2) {
+      display: flex;
+      align-items: center;
+    }
+
+    &-link {
+      @media screen and (min-width: $tablet2) {
+        position: relative;
+        font-size: 18px;
+        font-weight: 700;
+        color: $blue;
+        background-color: transparent;
+        margin-left: 60px;
+        padding: 5px 7px;
+        transition: color 0.5s;
+        &:before{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0;
+          background-color: $blue;
+          z-index: -1;
+          transition: width 0.5s;
+        }
+
+        &:hover {
+          color: $white;
+          transition: color 0.5s;
+          &:before{
+            width: 100%;
+            transition: width 0.5s;
+          }
+        }
+      }
+
+      &:first-child {
+        @media screen and (min-width: $tablet2) {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+
+  &__burger {
+    width: 22px;
+    height: 20px;
+    @media screen and (min-width: $tablet2) {
+      display: none;
+    }
+
+    & svg {
+      fill: $blue;
+      cursor: pointer;
+    }
+  }
+
+  &-mobile {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    border-top: 33px solid $black;
+    background-color: $gray;
+    height: 100vh;
+    transition: transform 0.5s;
+    z-index: 51;
+    @media screen and (min-width: $tablet2) {
+      display: none;
+    }
+
+    &.open {
+      transform: translate(-100%, 0);
+      transition: transform 0.5s;
+    }
+
+    & .container {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 33px);
+
+      & .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 77px;
+      }
+    }
+
+    & .header__nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 1;
+      @media screen and (min-width: $mobile2) {
+        max-width: max-content;
+        align-self: center;
+      }
+
+      &-link {
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 49px;
+        color: $blue;
+        @media screen and (min-width: $mobile1) {
+          font-size: 36px;
+          margin-bottom: 20px;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    & .header__close {
+      width: 20px;
+      height: 20px;
+
+      & svg {
+        fill: $blue;
+        cursor: pointer;
+      }
+    }
+
+    &__footer {
+      padding: 40px 0 15px;
+
+      & .header-mobile__feedback {
+        font-size: 22px;
+        font-weight: 700;
+        color: $blue;
+      }
+
+      &-text {
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 20px;
+        @media screen and (min-width: $tablet1) {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}

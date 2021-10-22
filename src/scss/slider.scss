@@ -1,0 +1,86 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.main {
+  & > .swiper-container {
+    position: relative;
+    width: 100%;
+    @media screen and (min-width: $tablet2) {
+      height: 100vh;
+    }
+
+    & > .container {
+      display: none;
+      @media screen and (min-width: $tablet2) {
+        position: absolute;
+        display: block;
+        height: 100%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        pointer-events: none;
+      }
+    }
+
+    & > .swiper-wrapper {
+      position: relative;
+      display: block;
+      width: 100%;
+      @media screen and (min-width: $tablet2) {
+        display: flex;
+      }
+
+      & > .swiper-slide {
+        position: relative;
+        width: 100%;
+        @media screen and (min-width: $tablet2) {
+          height: 100vh;
+          padding-top: 120px;
+          background-color: $gray;
+          pointer-events: none;
+        }
+
+        &.swiper-slide-active {
+          z-index: 2;
+        }
+      }
+    }
+
+    & .swiper-pagination {
+      @media screen and (min-width: $tablet2) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25px;
+        left: 100%;
+        bottom: 50%;
+        transform: translate(-100%, 50%);
+      }
+      @media screen and (min-width: $desktop2) {
+        width: 15px;
+        left: calc(100% + 15px);
+        transform: translate(0, 50%);
+      }
+
+      & .swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        background-color: $blue;
+        border: 2px solid $gray;
+        opacity: 0.2;
+        margin: 20px 0;
+        pointer-events: auto;
+        transition: background-color 0.5s, border 0.5s, opacity 0.5s;
+
+        &.swiper-pagination-bullet-active {
+          width: 10px;
+          height: 10px;
+          background-color: transparent;
+          border: 2px solid $blue;
+          opacity: 1;
+          transition: background-color 0.5s, border 0.5s, opacity 0.5s;
+        }
+      }
+    }
+  }
+}

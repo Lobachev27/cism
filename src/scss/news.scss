@@ -1,0 +1,425 @@
+@import "partials/params";
+@import "partials/mixins";
+
+.news {
+  position: relative;
+  margin: 60px auto 0;
+  pointer-events: auto;
+  @media screen and (min-width: $tablet1) {
+    margin: 100px auto 0;
+  }
+  @media screen and (min-width: $tablet2) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  & .row {
+    align-items: flex-end;
+    flex-grow: 1;
+  }
+
+  & .container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  & .intro__footer {
+    flex-grow: 1;
+    align-items: flex-end;
+  }
+
+  &__slider {
+    position: relative;
+    /*background-color: $white;
+    box-shadow: 0 22px 34px rgba(0,0,0, 0.03);*/
+    width: calc(100% + 15px);
+    padding: 25px 15px 25px 15px;
+    right: 15px;
+    margin: 20px 0 0;
+    pointer-events: auto;
+    @media screen and (min-width: $tablet1) {
+      padding: 80px 25px 40px 15px;
+      margin: 30px 0 ;
+    }
+    @media screen and (min-width: $tablet2) {
+      right: 25px;
+      width: calc(100% + 25px);
+      padding: 30px 40px 30px 25px;
+      margin: 40px 0 ;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100%;
+      background-color: $white;
+      box-shadow: 0 22px 34px rgba(0,0,0, 0.03);
+    }
+
+    &.news__slider-mobile {
+      @media screen and (min-width: $tablet2) {
+        display: none;
+      }
+
+      & .swiper-slide {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        & .news__item {
+          display: block;
+          width: calc(50% - 10px);
+
+          &:first-child {
+            width: 100%;
+            margin-bottom: 20px;
+
+            & .news__item-img {
+              height: 50vw;
+              @media screen and (min-width: $tablet1) {
+                height: 45vw;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.news__slider-desktop {
+      display: none;
+      @media screen and (min-width: $tablet2) {
+        display: block;
+        position: relative;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: $gray;
+        top: 0;
+        right: 0;
+        transform: translateX(100%);
+        width: 100vw;
+        height: 100%;
+        z-index: 2;
+      }
+
+      & .swiper-container {
+        @media screen and (min-width: $desktop1) {
+          overflow: visible;
+        }
+      }
+
+      & .swiper-slide {
+        min-height: 390px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.2s;
+        @media screen and (min-width: $desktop1) {
+          min-height: 420px;
+        }
+
+        &.swiper-slide-prev,
+        &.swiper-slide-prev-prev {
+          opacity: 0.5;
+          transition: opacity 0.2s;
+        }
+
+        & .news__item {
+          margin-top: 70px;
+          transition: margin 0.5s;
+          pointer-events: none;
+
+          &-img {
+            height: 200px;
+            transition: height 0.5s;
+            @media screen and (min-width: $desktop1) {
+              height: 240px;
+            }
+          }
+        }
+
+        &.swiper-slide-visible {
+          width: calc(30% - 20px)!important;
+          pointer-events: auto;
+          opacity: 1;
+
+          & .news__item {
+            pointer-events: auto;
+            &:hover {
+              cursor: pointer;
+
+              & .news__item-info {
+                transform: translateX(0);
+                transition: transform 0.5s;
+              }
+            }
+          }
+
+          &.swiper-slide-active {
+            width: calc(40% - 20px)!important;
+
+            & .news__item {
+              margin-top: 0;
+              transition: margin 0.5s;
+
+              &-img {
+                height: 270px;
+                transition: height 0.5s;
+                @media screen and (min-width: $desktop1) {
+                  height: 310px;
+                }
+              }
+
+              &-description {
+                @media screen and (min-width: $tablet2) {
+                  font-size: 14px;
+                }
+                @media screen and (min-width: $desktop1) {
+                  font-size: 16px;
+                  line-height: 28px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    & .swiper-container {
+      height: max-content;
+      width: 100%;
+      pointer-events: auto;
+    }
+
+    & .swiper-wrapper {
+      position: relative;
+      height: max-content;
+      /*flex-wrap: wrap;*/
+      width: 100%;
+    }
+
+    & .swiper-navigation {
+      position: absolute;
+      width: 50px;
+      height: 18px;
+      margin: 0;
+      top: -45px;
+      right: 0;
+      @media screen and (min-width: $tablet1) {
+        top: 30px;
+        right: 25px;
+      }
+      @media screen and (min-width: $tablet2) {
+        right: 40px;
+      }
+
+      & .swiper-button-next,
+      & .swiper-button-prev {
+        position: absolute;
+        outline: none;
+        width: 15px;
+        height: 18px;
+        display: block;
+        opacity: 1;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        &:after {
+          content: '';
+        }
+
+        & svg {
+          position: absolute;
+          height: 18px;
+          top: 50%;
+          transform: translateY(-50%);
+          fill: $gray-blue;
+          transition: fill 0.3s;
+        }
+
+        &:hover{
+          & svg {
+            fill: $blue;
+            transition: fill 0.3s;
+          }
+        }
+      }
+
+      & .swiper-button-prev {
+        left: 0;
+        & svg {
+          transform: rotate(180deg) translateY(50%);
+        }
+      }
+
+      & .swiper-button-next {
+        right: 0;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: block;
+    pointer-events: auto;
+    width: 100%;
+    &:hover {
+      & .news__item-img {
+        &:before {
+          opacity: 0.7;
+          transition: opacity 0.3s;
+        }
+      }
+
+      & .news__item-caption {
+        color: $blue;
+        transition: color 0.3s;
+      }
+    }
+
+    &-img {
+      position: relative;
+      width: 100%;
+      height: 28vw;
+      overflow: hidden;
+      @media screen and (min-width: $tablet1) {
+        height: 25vw;
+      }
+      @media screen and (min-width: $tablet2) {
+        height: 240px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $blue;
+        opacity: 0;
+        transition: opacity 0.3s;
+        @media screen and (min-width: $tablet2) {
+          display: none;
+        }
+      }
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+
+    &-info {
+      position: absolute;
+      background-color: rgba(35, 94, 207, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 0.5s;
+      @media screen and (min-width: $desktop1) {
+        padding: 30px;
+      }
+    }
+
+    &-description {
+      font-size: 0;
+      font-weight: 700;
+      line-height: 24px;
+      color: $white;
+      flex-grow: 1;
+      z-index: 3;
+    }
+
+    &-link{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+    }
+
+    &-social {
+      position: relative;
+      display: none;
+      align-items: center;
+      @media screen and (min-width: $tablet2) {
+        display: flex;
+        z-index: 5;
+      }
+
+      &-link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 25px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+
+        &:hover {
+          & svg {
+            fill: $white;
+            transition: fill 0.3s;
+          }
+        }
+
+        & svg {
+          width: 18px;
+          height: 18px;
+          fill: $gray-blue;
+          transition: fill 0.3s;
+        }
+      }
+    }
+
+    &-date {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #A2BECE;
+      margin-top: 10px;
+      @media screen and (min-width: $tablet1) {
+        font-size: 14px;
+      }
+      @media screen and (min-width: $tablet2) {
+        margin-top: 15px;
+      }
+    }
+
+    &-caption {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 20px;
+      margin-top: 7px;
+      transition: color 0.3s;
+      @media screen and (min-width: $tablet1) {
+        font-size: 16px;
+      }
+      @media screen and (min-width: $tablet2) {
+        margin-top: 15px;
+      }
+    }
+  }
+}
